@@ -1,7 +1,7 @@
 var kit = require('node-kit');
 var through2 = require('through2');
-var gutil = require('gulp-util');
-var PluginError = gutil.PluginError;
+var replaceExt = require('replace-ext');
+var PluginError = require('plugin-error');
 var path = require('path');
 var partialPrefix = '_';
 
@@ -11,10 +11,8 @@ function isPartial(filepath) {
 
 module.exports = function (options) {
   options = options || {};
-	options.variables = options.variables || {};
-	options.forbiddenPaths = options.forbiddenPaths || [];
 
-  function transform (file, enc, next) {
+  function transform(file, enc, next) {
     var self = this;
 
     if (file.isNull()) {
@@ -22,21 +20,24 @@ module.exports = function (options) {
       return next();
     }
 
-    if(isPartial(file.path) && !options.compilePartials) {
+    if (isPartial(file.path) && !options.compilePartials) {
       return next();
     }
 
     if (file.isStream()) {
-      this.emit('error', new PluginError('gulp-kit', 'Streaming not supported'));
+      this.emit(
+        'error',
+        new PluginError('gulp-kit', 'Streaming not supported')
+      );
       return next();
     }
 
     try {
-      var html = new kit.Kit(file.path, options.variables, options.forbiddenPaths).toString();
+      var html = kit(file.path);
       file.contents = new Buffer(html);
-			file.path = (options.fileExtension) ? gutil.replaceExtension(file.path, options.fileExtension) : gutil.replaceExtension(file.path, '.html');
+      file.path = replaceExt(file.path, '.html');
       self.push(file);
-    } catch( e ) {
+    } catch (e) {
       self.emit('error', new PluginError('gulp-kit', e));
     }
 
