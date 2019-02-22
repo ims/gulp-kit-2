@@ -1,6 +1,6 @@
 {
     "name": "gulp-kit-2",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "Integrates node-kit with gulp 4 to compile .kit files",
     "main": "index.js",
     "repository": {
