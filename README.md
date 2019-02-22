@@ -8,14 +8,12 @@ with your own build system.
 ## Usage
 
     var kit = require('gulp-kit');
-
     const html = done => {
         src('src/kit/index.kit')
         .pipe(kit())
         .pipe(dest('dist/'));
         done();
     };
-
     exports.html = html;
 
 ## Options
