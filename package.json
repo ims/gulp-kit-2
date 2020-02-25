@@ -5,7 +5,7 @@
     "main": "index.js",
     "repository": {
         "type": "git",
-        "url": "https://github.com/ims/gulp-kit-2"
+        "url": "https://github.com/tiborpino/gulp-kit-2"
     },
     "keywords": [
         "gulp",
@@ -16,7 +16,7 @@
     "author": "Tibor Pino <tibor.pino@freshidea.sk>",
     "license": "BSD-2-Clause",
     "bugs": {
-        "url": "https://github.com/ims/gulp-kit-2/issues"
+        "url": "https://github.com/tiborpino/gulp-kit-2/issues"
     },
     "dependencies": {
         "node-kit": "0.11.0",
