@@ -1,4 +1,4 @@
-# gulp-kit
+# gulp-kit-2
 
 Integrates [`node-kit`](https://github.com/jeremyworboys/node-kit)
 with [`gulp 4`](http://gulpjs.com/) to compile
@@ -7,7 +7,7 @@ with your own build system.
 
 ## Usage
 
-    var kit = require('gulp-kit');
+    var kit = require('gulp-kit-2');
     const html = done => {
         src('src/kit/index.kit')
         .pipe(kit())
